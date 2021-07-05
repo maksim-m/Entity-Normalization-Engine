@@ -31,7 +31,8 @@ class EntityClustering(object):
             cosine_similarity = cosine_similarity.cpu().detach().numpy()[0][0]
             if cosine_similarity > THRESHOLD:
                 logger.debug("Similarity: " + str(cosine_similarity))
-                entity.synonyms.append(input_string)
+                if input_string.strip() not in entity.synonyms:
+                    entity.synonyms.append(input_string.strip())
                 print("This entity already exists. Known synonyms: " + str(entity.synonyms))
                 return
 
