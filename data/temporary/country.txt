@@ -1,0 +1,224 @@
+Japan
+Indonesia
+India
+Philippines
+China
+Brazil
+Korea, South
+Mexico
+Egypt
+United States
+Russia
+Thailand
+Argentina
+Bangladesh
+Nigeria
+Turkey
+Pakistan
+Iran
+Congo (Kinshasa)
+Vietnam
+France
+United Kingdom
+Peru
+Colombia
+Angola
+Malaysia
+Hong Kong
+Sudan
+Chile
+Saudi Arabia
+Tanzania
+Iraq
+Singapore
+Kenya
+Burma
+Canada
+Australia
+Côte D’Ivoire
+Spain
+South Africa
+Morocco
+Jordan
+Afghanistan
+Germany
+Algeria
+Bolivia
+Ethiopia
+Ukraine
+Yemen
+Italy
+Korea, North
+Taiwan
+Ecuador
+Madagascar
+Dominican Republic
+United Arab Emirates
+Guatemala
+Cameroon
+Uzbekistan
+Ghana
+Azerbaijan
+Cuba
+Cambodia
+Somalia
+Belarus
+Mali
+Venezuela
+Malawi
+Romania
+Paraguay
+Austria
+Syria
+Congo (Brazzaville)
+Kazakhstan
+Poland
+Hungary
+Zambia
+Guinea
+Uganda
+Burkina Faso
+Zimbabwe
+New Zealand
+Oman
+Netherlands
+Mongolia
+Serbia
+Bulgaria
+Czechia
+Uruguay
+Qatar
+Honduras
+Tunisia
+Mozambique
+Ireland
+Senegal
+Libya
+Georgia
+Chad
+Denmark
+Armenia
+Mauritania
+Kyrgyzstan
+Turkmenistan
+Niger
+Nicaragua
+Liberia
+Haiti
+Nepal
+Sweden
+Eritrea
+Sierra Leone
+Israel
+Panama
+Togo
+Gabon
+Croatia
+Tajikistan
+Benin
+Laos
+Sri Lanka
+Rwanda
+Central African Republic
+Latvia
+Norway
+Moldova
+Greece
+Burundi
+Finland
+Macedonia
+Kuwait
+Jamaica
+Lithuania
+El Salvador
+Djibouti
+Portugal
+Estonia
+Slovakia
+Albania
+Lebanon
+Guinea-Bissau
+South Sudan
+Papua New Guinea
+Lesotho
+Cyprus
+Namibia
+Costa Rica
+Slovenia
+Bosnia And Herzegovina
+Bahamas, The
+Botswana
+Suriname
+Timor-Leste
+Kosovo
+Guyana
+Equatorial Guinea
+Belgium
+Maldives
+Montenegro
+Bahrain
+Mauritius
+Switzerland
+Iceland
+Cabo Verde
+Luxembourg
+Barbados
+Comoros
+Bhutan
+Swaziland
+Solomon Islands
+Fiji
+Saint Lucia
+Sao Tome And Principe
+Vanuatu
+Brunei
+Monaco
+Trinidad And Tobago
+Samoa
+Liechtenstein
+Gambia, The
+Kiribati
+Seychelles
+Marshall Islands
+Saint Vincent And The Grenadines
+Tonga
+Antigua And Barbuda
+Andorra
+Belize
+Dominica
+Saint Kitts And Nevis
+American Samoa
+Malta
+Micronesia, Federated States Of
+Tuvalu
+Grenada
+San Marino
+West Bank
+Northern Mariana Islands
+Guam
+Palau
+Macau
+Puerto Rico
+Martinique
+Gibraltar
+Reunion
+Guadeloupe
+Curaçao
+French Polynesia
+New Caledonia
+French Guiana
+Aruba
+Jersey
+Mayotte
+Greenland
+Faroe Islands
+Wallis And Futuna
+Saint Helena, Ascension, And Tristan Da Cunha
+Bermuda
+Cayman Islands
+Isle Of Man
+Turks And Caicos Islands
+Cook Islands
+Vatican City
+Falkland Islands (Islas Malvinas)
+South Georgia And South Sandwich Islands
