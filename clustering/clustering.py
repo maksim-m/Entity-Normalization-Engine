@@ -19,7 +19,7 @@ THRESHOLD = 0.85
 
 class EntityClustering(object):
 
-    def __init__(self, entity_encoder):
+    def __init__(self, entity_encoder: SentenceTransformer):
         self.entity_encoder: SentenceTransformer = entity_encoder
         self.n_clusters = 0
         self.entities: List[Entity] = []
@@ -29,6 +29,7 @@ class EntityClustering(object):
         for entity in self.entities:
             cosine_similarity = util.pytorch_cos_sim(input_embeddings, entity.representative)
             cosine_similarity = cosine_similarity.cpu().detach().numpy()[0][0]
+
             if cosine_similarity > THRESHOLD:
                 logger.debug("Similarity: " + str(cosine_similarity))
                 if input_string.strip() not in entity.synonyms:
