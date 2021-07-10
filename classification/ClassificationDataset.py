@@ -17,7 +17,7 @@ class ClassificationDataset(Dataset):
         self.samples: List[str] = []
         self.labels: List[int] = []
         self.n_classes = 0
-        for file in listdir(input_dir):
+        for file in sorted(listdir(input_dir)):
             filename: Path = Path.joinpath(input_dir, file)
             if isfile(filename):
                 with open(filename) as f:

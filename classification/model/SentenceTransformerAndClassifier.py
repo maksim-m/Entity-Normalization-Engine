@@ -18,10 +18,10 @@ class SentenceTransformerAndClassifierResult:
 
 class SentenceTransformerAndClassifier(nn.Module):
 
-    def __init__(self, sentence_transformer_model: str, n_classes: int, dropout_rate: float = 0.5, embedding_dim=768,
+    def __init__(self, base_model: str, n_classes: int, dropout_rate: float = 0.5, embedding_dim=768,
                  hidden_dim=512):
         super().__init__()
-        self.sentence_transformer = AutoModel.from_pretrained(sentence_transformer_model)
+        self.sentence_transformer = AutoModel.from_pretrained(base_model)
 
         # freeze parameters of sentence_transformer - we want to train only the classifier part
         for name, param in self.sentence_transformer.named_parameters():
@@ -32,7 +32,7 @@ class SentenceTransformerAndClassifier(nn.Module):
         self.dropout = nn.Dropout(dropout_rate)
         self.classifier = nn.Linear(hidden_dim, n_classes)
 
-    def count_parameters(self, skip_frozen=True):
+    def describe_parameters(self, skip_frozen=True):
         table = PrettyTable(["Modules", "Parameters"])
         total_params = 0
         for name, parameter in self.named_parameters():
