@@ -46,7 +46,6 @@ class SentenceTransformerAndClassifier(nn.Module):
             print(f"Total trainable parameters: {total_params}")
         else:
             print(f"Total parameters: {total_params}")
-        return total_params
 
     def compute_token_embeddings(self, input_ids, attention_mask):
         sentence_transformer_output: BaseModelOutputWithPooling = self.sentence_transformer(input_ids, attention_mask)
