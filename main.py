@@ -5,7 +5,9 @@ import torch
 from envparse import env
 
 from classification.model.SentenceTransformerAndClassifier import SentenceTransformerAndClassifierResult
-from clustering.EntityProcessor import EntityProcessor
+from clustering.EntityProcessor import EntityProcessorType
+from clustering.SentenceEmbeddingEntityProcessor import SentenceEmbeddingEntityProcessor
+from clustering.StringEntityProcessor import StringEntityProcessor
 from utils import load_model, load_class2label, inverse_dict
 
 MODEL_PATH_STR = env.str("MODEL_PATH", default="classification_model.pt")
@@ -18,8 +20,7 @@ if __name__ == "__main__":
     print("Entity Normalization Engine")
     print("-" * 27)
     print("Usage: Type your entity and press Enter. Repeat until all entities are processed.")
-    print("Type \"stop\" to stop program execution.")
-    print()
+    print("Type \"stop\" to stop program execution.\n")
 
     print("Loading model...")
     class2label = load_class2label(CLASS2LABEL_PATH)
@@ -27,28 +28,27 @@ if __name__ == "__main__":
     model, tokenizer = load_model(MODEL_PATH)
     print("Loading model... Done")
 
-    processors: Dict[int, EntityProcessor] = dict()
+    processors: Dict[int, EntityProcessorType] = dict()
     for class_id in class2label.keys():
-        if class2label[class_id] != "serial_number":
-            processors[class_id] = EntityProcessor()
+        label = class2label[class_id]
+        processor = StringEntityProcessor(label) if label == "serial_number" else SentenceEmbeddingEntityProcessor(label)
+        processors[class_id] = processor
 
     while True:
         user_input = input("Enter next entity: ")
         if user_input == "stop":
             break
+
         encoded_input = tokenizer(user_input, padding=True, truncation=True, return_tensors='pt')
         model_output: SentenceTransformerAndClassifierResult = model.encode_and_classify(**encoded_input)
+
         predicted_class = torch.argmax(model_output.classification_result, dim=1).cpu().item()
         confidence = torch.max(model_output.classification_result, dim=1)[0].cpu().item()
-
         print(f"Entity class: {class2label[predicted_class]} ({int(confidence * 100)}%)")
-        if class2label[predicted_class] == "serial_number":
-            # TODO
-            pass
-        else:
-            processors[predicted_class].process(user_input, model_output.sentence_embeddings)
 
-    print("")
-    print("Results:")
-    # TODO
+        processors[predicted_class].process(user_input, sentence_embeddings=model_output.sentence_embeddings)
+
+    print("\nResults:\n")
+    for processor in processors.values():
+        processor.describe_entities()
     print("")
