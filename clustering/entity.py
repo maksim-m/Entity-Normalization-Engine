@@ -6,6 +6,7 @@ from torch import Tensor
 
 @dataclass
 class Entity(object):
+    canonical_representation: str
     representative: Optional[Tensor] = None
     synonyms: List[str] = field(default_factory=list)
 

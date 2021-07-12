@@ -31,7 +31,8 @@ if __name__ == "__main__":
     processors: Dict[int, EntityProcessorType] = dict()
     for class_id in class2label.keys():
         label = class2label[class_id]
-        processor = StringEntityProcessor(label) if label == "serial_number" else SentenceEmbeddingEntityProcessor(label)
+        processor = StringEntityProcessor(label) if label == "serial_number" else SentenceEmbeddingEntityProcessor(label,
+                                                                                                                   distance=1)
         processors[class_id] = processor
 
     while True:

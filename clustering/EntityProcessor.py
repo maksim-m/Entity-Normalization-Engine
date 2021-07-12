@@ -20,7 +20,7 @@ class EntityProcessor(ABC):
                 return
 
         print("This is a new entity")
-        entity = Entity()
+        entity = Entity(input_string)
         entity.representative = sentence_embeddings
         entity.synonyms.append(input_string)
         self.entities.append(entity)
@@ -37,4 +37,4 @@ class EntityProcessor(ABC):
 
         print(f"{n_entities} entities for type \"{self.entity_type}\":")
         for index, entity in enumerate(self.entities, 1):
-            print(f"\tEntity {index}. Known sysonyms: " + str(entity.synonyms))
+            print(f"\tEntity {index}. Known synonyms: " + str(entity.synonyms))
