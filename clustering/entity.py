@@ -1,10 +1,10 @@
 from dataclasses import dataclass, field
-from typing import List
+from typing import List, Optional
 
 from torch import Tensor
 
 
 @dataclass
 class Entity(object):
-    representative: Tensor = None
+    representative: Optional[Tensor] = None
     synonyms: List[str] = field(default_factory=list)

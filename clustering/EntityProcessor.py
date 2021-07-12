@@ -1,14 +1,13 @@
 import logging
 from typing import List
 
-import torch
 from sentence_transformers import util
 from torch import Tensor
 from transformers import AutoTokenizer
 
 from classification.model.SentenceTransformerAndClassifier import SentenceTransformerAndClassifier, \
     SentenceTransformerAndClassifierResult
-from entity import Entity
+from clustering.entity import Entity
 
 logger = logging.getLogger(__name__)
 handler = logging.StreamHandler()
@@ -20,7 +19,7 @@ logger.setLevel(logging.DEBUG)
 THRESHOLD = 0.85
 
 
-class EntityClustering(object):
+class EntityProcessor(object):
 
     def __init__(self):
         self.n_clusters = 0
@@ -46,14 +45,16 @@ class EntityClustering(object):
         entity.synonyms.append(input_string)
         self.entities.append(entity)
 
+    def describe_entities(self):
+        pass
+
 
 if __name__ == "__main__":
     logger.setLevel(logging.INFO)
-    logger.debug("CUDA available: " + str(torch.cuda.is_available()))
 
     model = SentenceTransformerAndClassifier("sentence-transformers/paraphrase-mpnet-base-v2", n_classes=5)
     tokenizer = AutoTokenizer.from_pretrained("sentence-transformers/paraphrase-mpnet-base-v2")
-    entityClustering = EntityClustering()
+    entityClustering = EntityProcessor()
 
     while True:
         user_input = input("Enter next entity: ")

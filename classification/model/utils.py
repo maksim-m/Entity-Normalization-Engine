@@ -2,7 +2,7 @@ import torch
 from torch import Tensor
 
 
-def mean_pooling(token_embeddings: Tensor, attention_mask: Tensor):
+def mean_pooling(token_embeddings: Tensor, attention_mask: Tensor) -> Tensor:
     """
     Mean Pooling - Take attention mask into account for correct averaging
     """
