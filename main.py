@@ -13,7 +13,7 @@ from utils import load_model, load_class2label, inverse_dict
 MODEL_PATH_STR = env.str("MODEL_PATH", default="classification_model.pt")
 MODEL_PATH = Path(MODEL_PATH_STR)
 
-CLASS2LABEL_PATH_STR = env.str("CLASS2LABEL_PATH", default="index2label.json")
+CLASS2LABEL_PATH_STR = env.str("CLASS2LABEL_PATH", default="class2label.json")
 CLASS2LABEL_PATH = Path(CLASS2LABEL_PATH_STR)
 
 if __name__ == "__main__":
