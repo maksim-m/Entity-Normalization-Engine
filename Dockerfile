@@ -1,10 +1,12 @@
-FROM python:3.8-buster
+FROM python:3.8-slim
 
-RUN pip3 install --no-cache-dir torch==1.9.0+cpu torchvision==0.10.0+cpu torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html
-RUN pip3 install transformers[torch]
+RUN apt-get update && apt-get install -y gcc && apt-get clean
 
-COPY requirements.txt .
-RUN pip3 install --no-deps -r requirements.txt
+RUN pip3 install --no-cache-dir torch==1.9.0+cpu -f https://download.pytorch.org/whl/torch_stable.html && \
+	pip3 install --no-cache-dir transformers[torch]
+
+COPY inference-requirements.txt .
+RUN pip3 install --no-cache-dir -r inference-requirements.txt && pip uninstall -y torchvision
 
 COPY download_pretrained_model.py .
 RUN python download_pretrained_model.py

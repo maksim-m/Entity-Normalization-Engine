@@ -28,7 +28,7 @@ if __name__ == "__main__":
     class2label = load_class2label(CLASS2LABEL_PATH)
     label2class = inverse_dict(class2label)
     model, tokenizer = load_model(MODEL_PATH, BASE_MODEL)
-    print("Loading model... Done")
+    print("Loading model... Done\n")
 
     processors: Dict[int, EntityProcessorType] = dict()
     for class_id in class2label.keys():

@@ -1,5 +1,10 @@
 *
+**/*/.pyc
+**/*/__pycache__
+**/*/.ipynb_checkpoints
+
 !environment.yml
+!inference-requirements.txt
 !requirements.txt
 !download_pretrained_model.py
 

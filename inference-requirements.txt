@@ -1,0 +1,4 @@
+envparse==0.2.0
+sentence-transformers==2.0.0
+prettytable==2.1.0
+pyxDamerauLevenshtein==1.7.0
