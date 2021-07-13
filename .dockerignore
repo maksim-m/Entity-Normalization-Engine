@@ -1,0 +1,12 @@
+*
+!environment.yml
+!requirements.txt
+!download_pretrained_model.py
+
+!class2label.json
+!classification_model.pt
+
+!main.py
+!utils.py
+!classification
+!clustering

@@ -11,12 +11,12 @@ from classification.model.SentenceTransformerAndClassifier import SentenceTransf
 PROJECT_ROOT = Path(__file__).parent
 
 
-def load_model(filename: Path) -> Tuple[SentenceTransformerAndClassifier, Callable]:
-    base_model = "sentence-transformers/paraphrase-mpnet-base-v2"
+def load_model(filename: Path, base_model: str) -> Tuple[SentenceTransformerAndClassifier, Callable]:
     model = SentenceTransformerAndClassifier(base_model, n_classes=5)
     tokenizer = AutoTokenizer.from_pretrained(base_model)
 
-    model.load_state_dict(torch.load(filename))
+    map_location = None if torch.cuda.is_available() else "cpu"
+    model.load_state_dict(torch.load(filename, map_location=map_location))
     return model, tokenizer
 
 

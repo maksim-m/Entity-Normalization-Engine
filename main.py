@@ -16,6 +16,8 @@ MODEL_PATH = Path(MODEL_PATH_STR)
 CLASS2LABEL_PATH_STR = env.str("CLASS2LABEL_PATH", default="class2label.json")
 CLASS2LABEL_PATH = Path(CLASS2LABEL_PATH_STR)
 
+BASE_MODEL = env.str("BASE_MODEL", default="sentence-transformers/paraphrase-mpnet-base-v2")
+
 if __name__ == "__main__":
     print("Entity Normalization Engine")
     print("-" * 27)
@@ -25,7 +27,7 @@ if __name__ == "__main__":
     print("Loading model...")
     class2label = load_class2label(CLASS2LABEL_PATH)
     label2class = inverse_dict(class2label)
-    model, tokenizer = load_model(MODEL_PATH)
+    model, tokenizer = load_model(MODEL_PATH, BASE_MODEL)
     print("Loading model... Done")
 
     processors: Dict[int, EntityProcessorType] = dict()
