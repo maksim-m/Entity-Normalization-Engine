@@ -57,8 +57,8 @@ If you don't want to run the application using Docker, follow these step:
     ```shell
     pip3 install -r inference-requirements.txt
     ```
-5. [Download](https://drive.google.com/drive/folders/1mYSN5_HImeyBi70hjn-3Kk-YKkKb758C) the pretrained model and save it into
-   the project's root directory
+5. [Download](https://github.com/maksim-m/Entity-Normalization-Engine/releases/latest) the pretrained model file and save it
+   into the project's root directory
 6. Run the app:
    ```shell
    python3 main.py
