@@ -1,3 +1,4 @@
+import sys
 from pathlib import Path
 from typing import Dict
 
@@ -18,17 +19,23 @@ CLASS2LABEL_PATH = Path(CLASS2LABEL_PATH_STR)
 
 BASE_MODEL = env.str("BASE_MODEL", default="sentence-transformers/paraphrase-mpnet-base-v2")
 
-if __name__ == "__main__":
+
+def print_header():
     print("Entity Normalization Engine")
     print("-" * 27)
     print("Usage: Type your entity and press Enter. Repeat until all entities are processed.")
     print("Type \"stop\" to stop program execution.\n")
 
-    print("Loading model...")
+
+if __name__ == "__main__":
+    print_header()
+
+    print("Loading model... ", end="")
+    sys.stdout.flush()
     class2label = load_class2label(CLASS2LABEL_PATH)
     label2class = inverse_dict(class2label)
     model, tokenizer = load_model(MODEL_PATH, BASE_MODEL)
-    print("Loading model... Done\n")
+    print("Done\n")
 
     processors: Dict[int, EntityProcessorType] = dict()
     for class_id in class2label.keys():
@@ -39,10 +46,10 @@ if __name__ == "__main__":
 
     while True:
         user_input = input("Enter next entity: ")
+        user_input = clean(user_input)
         if user_input == "stop":
             break
 
-        user_input = clean(user_input)
         encoded_input = tokenizer(user_input, padding=True, truncation=True, return_tensors='pt')
         model_output: SentenceTransformerAndClassifierResult = model.encode_and_classify(**encoded_input)
 

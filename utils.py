@@ -27,7 +27,7 @@ def load_class2label(filename: Path) -> Dict[int, str]:
 
 
 def clean(input: str) -> str:
-    result = input.lower()
+    result = input.lower().strip()
     result = re.sub(r"\s\s+", " ", result)
     result = re.sub("[^a-zA-Z0-9 ]+", "", result)
     return result

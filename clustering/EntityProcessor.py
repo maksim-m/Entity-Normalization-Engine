@@ -35,6 +35,7 @@ class EntityProcessor(ABC):
             print(f"No entities for type \"{self.entity_type}\"")
             return
 
-        print(f"{n_entities} entities for type \"{self.entity_type}\":")
+        noun = "entity" if n_entities == 1 else "entities"
+        print(f"{n_entities} {noun} for type \"{self.entity_type}\":")
         for index, entity in enumerate(self.entities, 1):
             print(f"\tEntity {index}. Known synonyms: " + str(entity.synonyms))

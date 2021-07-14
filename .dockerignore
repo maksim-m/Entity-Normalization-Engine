@@ -11,6 +11,7 @@
 !class2label.json
 !model.pt
 
+!LICENSE
 !main.py
 !utils.py
 !classification
