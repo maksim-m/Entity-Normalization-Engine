@@ -130,3 +130,6 @@ dmypy.json
 
 # Raw datasets
 data/raw
+
+# Exported models
+*pt
