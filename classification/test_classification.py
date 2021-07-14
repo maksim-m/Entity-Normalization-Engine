@@ -23,7 +23,7 @@ if __name__ == "__main__":
     model = SentenceTransformerAndClassifier(base_model, n_classes=5)
     tokenizer = AutoTokenizer.from_pretrained(base_model)
 
-    model.load_state_dict(torch.load(Path.joinpath(PROJECT_ROOT, "classification_model.pt")))
+    model.load_state_dict(torch.load(Path.joinpath(PROJECT_ROOT, "model.pt")))
     while True:
         user_input = input("Enter next entity: ")
         encoded_input = tokenizer(user_input, padding=True, truncation=True, return_tensors='pt')

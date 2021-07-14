@@ -7,6 +7,8 @@ from typing import List, Dict
 from torch.utils.data import Dataset
 from transformers import BatchEncoding
 
+from utils import clean
+
 
 class ClassificationDataset(Dataset):
 
@@ -31,7 +33,9 @@ class ClassificationDataset(Dataset):
         return len(self.samples)
 
     def __getitem__(self, index):
-        encoded_item: BatchEncoding = self.tokenizer(self.samples[index],
+        sample = self.samples[index]
+        sample = clean(sample)
+        encoded_item: BatchEncoding = self.tokenizer(sample,
                                                      padding="max_length",
                                                      max_length=self.max_length,
                                                      truncation=True,

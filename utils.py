@@ -1,5 +1,6 @@
 import io
 import json
+import re
 from pathlib import Path
 from typing import Tuple, Dict, Callable, TypeVar
 
@@ -23,6 +24,13 @@ def load_model(filename: Path, base_model: str) -> Tuple[SentenceTransformerAndC
 def load_class2label(filename: Path) -> Dict[int, str]:
     with io.open(filename, "r", encoding="utf-8") as file:
         return {int(k): v for k, v in json.load(file).items()}
+
+
+def clean(input: str) -> str:
+    result = input.lower()
+    result = re.sub(r"\s\s+", " ", result)
+    result = re.sub("[^a-zA-Z0-9 ]+", "", result)
+    return result
 
 
 K = TypeVar("K")

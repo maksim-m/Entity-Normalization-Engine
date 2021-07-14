@@ -22,10 +22,10 @@ class SentenceTransformerAndClassifier(nn.Module):
     def __init__(self, base_model: str, n_classes: int, dropout_rate: float = 0.5, embedding_dim: int = 768,
                  hidden_dim: int = 512, device: Optional[str] = None):
         super().__init__()
-        self.sentence_transformer = AutoModel.from_pretrained(base_model)
+        self.encoder = AutoModel.from_pretrained(base_model)
 
-        # freeze parameters of sentence_transformer - we want to train only the classifier part
-        for name, param in self.sentence_transformer.named_parameters():
+        # freeze parameters of pretrained encoder model - we want to train only the classifier part
+        for name, param in self.encoder.named_parameters():
             param.requires_grad = False
 
         self.linear_layer = nn.Linear(embedding_dim, hidden_dim)
@@ -53,7 +53,7 @@ class SentenceTransformerAndClassifier(nn.Module):
             print(f"Total parameters: {total_params}")
 
     def _compute_token_embeddings(self, input_ids: Tensor, attention_mask: Tensor) -> Tensor:
-        sentence_transformer_output: BaseModelOutputWithPooling = self.sentence_transformer(input_ids, attention_mask)
+        sentence_transformer_output: BaseModelOutputWithPooling = self.encoder(input_ids, attention_mask)
         token_embeddings = sentence_transformer_output["last_hidden_state"]
         return token_embeddings
 

@@ -8,9 +8,9 @@ from classification.model.SentenceTransformerAndClassifier import SentenceTransf
 from clustering.EntityProcessor import EntityProcessorType
 from clustering.SentenceEmbeddingEntityProcessor import SentenceEmbeddingEntityProcessor
 from clustering.StringEntityProcessor import StringEntityProcessor
-from utils import load_model, load_class2label, inverse_dict
+from utils import load_model, load_class2label, inverse_dict, clean
 
-MODEL_PATH_STR = env.str("MODEL_PATH", default="classification_model.pt")
+MODEL_PATH_STR = env.str("MODEL_PATH", default="model.pt")
 MODEL_PATH = Path(MODEL_PATH_STR)
 
 CLASS2LABEL_PATH_STR = env.str("CLASS2LABEL_PATH", default="class2label.json")
@@ -42,6 +42,7 @@ if __name__ == "__main__":
         if user_input == "stop":
             break
 
+        user_input = clean(user_input)
         encoded_input = tokenizer(user_input, padding=True, truncation=True, return_tensors='pt')
         model_output: SentenceTransformerAndClassifierResult = model.encode_and_classify(**encoded_input)
 

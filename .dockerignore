@@ -9,7 +9,7 @@
 !download_pretrained_model.py
 
 !class2label.json
-!classification_model.pt
+!model.pt
 
 !main.py
 !utils.py
